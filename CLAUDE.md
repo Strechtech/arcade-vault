@@ -14,6 +14,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Tailwind CSS 4**
 - ESLint with Next.js core web vitals + TypeScript rules
 
+## SKILL for Frontend
+Usa siempre /frontend-design, para diseñar la interfaz del usuario
+
 ## Architecture
 
 **App Router**: All pages/routes live in `app/` directory. `app/layout.tsx` is the root layout.
@@ -24,14 +27,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Design methodology**: Spec-Driven Design (reference: https://github.com/Klerith/fernando-skills).
 
-## Commands
-
-```bash
-npm run dev      # Start dev server (http://localhost:3000)
-npm run build    # Build for production
-npm start        # Run production build
-npm run lint     # Run ESLint
-```
 
 ## Key Files
 

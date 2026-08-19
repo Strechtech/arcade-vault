@@ -14,4 +14,11 @@ https://github.com/Klerith/fernando-skills
 ```bash
 npx skills@latest add Klerith/fernando-skills
 ```
-## Hola mundo
+## Commands
+
+```bash
+npm run dev      # Start dev server (http://localhost:3000)
+npm run build    # Build for production
+npm start        # Run production build
+npm run lint     # Run ESLint
+```
