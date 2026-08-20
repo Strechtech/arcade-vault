@@ -20,17 +20,6 @@ export default function Sidebar({ user }: SidebarProps) {
   return (
     <aside className="av-sidebar">
       <div className="sidebar-content">
-        <nav className="sidebar-nav">
-          {user ? (
-            <a href="/perfil" className="sidebar-link">
-              Cuenta
-            </a>
-          ) : (
-            <a href="/auth" className="sidebar-link">
-              Iniciar Sesión
-            </a>
-          )}
-        </nav>
         <div className="sidebar-footer">
           <div className="pixel" style={{ fontSize: 9, color: "var(--ink-faint)", letterSpacing: "0.16em" }}>
             CRÉDITOS · 03
