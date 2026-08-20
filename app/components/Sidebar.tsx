@@ -20,20 +20,7 @@ export default function Sidebar({ user }: SidebarProps) {
   return (
     <aside className="av-sidebar">
       <div className="sidebar-content">
-        <div className="pixel" style={{ fontSize: 11, marginBottom: 16 }}>MENÚ</div>
         <nav className="sidebar-nav">
-          <a
-            href="/biblioteca"
-            className={`sidebar-link ${isActive("biblioteca") ? "active" : ""}`}
-          >
-            Biblioteca
-          </a>
-          <a
-            href="/salon"
-            className={`sidebar-link ${isActive("salon") ? "active" : ""}`}
-          >
-            Salón de la Fama
-          </a>
           {user ? (
             <a href="/perfil" className="sidebar-link">
               Cuenta

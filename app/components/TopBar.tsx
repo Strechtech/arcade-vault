@@ -17,10 +17,6 @@ export default function TopBar({ user }: TopBarProps) {
           <div className="logo-mark"></div>
           <div className="logo-text neon-cyan">ARCADE <span className="neon-magenta">VAULT</span></div>
         </div>
-        <div className="links">
-          <a href="/biblioteca">Biblioteca</a>
-          <a href="/salon">Salón de la Fama</a>
-        </div>
         <div className="spacer"></div>
         <div className="coin-counter">
           <span className="coin"></span>
@@ -29,7 +25,9 @@ export default function TopBar({ user }: TopBarProps) {
         {user ? (
           <button className="btn ghost auth-btn">{user.name} ▾</button>
         ) : (
-          <a href="/auth" className="btn auth-btn">Iniciar Sesión</a>
+          <div style={{ fontSize: "12px", color: "var(--ink-dim)", fontFamily: "var(--mono)" }}>
+            <a href="/auth">Iniciar Sesión</a>
+          </div>
         )}
         <button
           className="btn ghost hamburger"
@@ -46,9 +44,6 @@ export default function TopBar({ user }: TopBarProps) {
             onClick={() => setMobileMenuOpen(false)}
           ></div>
           <aside className="av-mobile-panel open">
-            <div className="pixel neon-cyan" style={{ fontSize: 11, marginBottom: 16 }}>MENÚ</div>
-            <a href="/biblioteca" onClick={() => setMobileMenuOpen(false)}>Biblioteca</a>
-            <a href="/salon" onClick={() => setMobileMenuOpen(false)}>Salón de la Fama</a>
             {user ? (
               <a href="/perfil" onClick={() => setMobileMenuOpen(false)}>Cuenta</a>
             ) : (
