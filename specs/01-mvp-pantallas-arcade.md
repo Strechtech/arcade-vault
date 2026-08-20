@@ -1,6 +1,6 @@
 # Spec 01: MVP Pantallas Arcade
 
-**State:** Implementado  
+**State:** Implementado
 **Date:** 2026-08-19  
 **Depends on:** —
 
