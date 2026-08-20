@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Press_Start_2P, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import TopBar from "@/app/components/TopBar";
+import { mockUser } from "@/app/lib/mockData";
 
 const pressStart2P = Press_Start_2P({
   variable: "--font-pixel",
@@ -24,7 +26,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="es"
       className={`${pressStart2P.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <TopBar user={mockUser} />
+        <main className="flex-1">{children}</main>
+      </body>
     </html>
   );
 }
