@@ -13,11 +13,12 @@ export default function TopBar({ user }: TopBarProps) {
   return (
     <>
       <nav className="av-nav">
-        <div className="logo">
+        <a href="/inicio" className="logo">
           <div className="logo-mark"></div>
           <div className="logo-text neon-cyan">ARCADE <span className="neon-magenta">VAULT</span></div>
-        </div>
+        </a>
         <div className="links">
+          <a href="/inicio">Inicio</a>
           <a href="/biblioteca">Biblioteca</a>
           <a href="/salon">Salón de la Fama</a>
         </div>
@@ -45,6 +46,7 @@ export default function TopBar({ user }: TopBarProps) {
           ></div>
           <aside className="av-mobile-panel open">
             <div className="pixel neon-cyan" style={{ fontSize: 11, marginBottom: 16 }}>MENÚ</div>
+            <a href="/inicio" onClick={() => setMobileMenuOpen(false)}>Inicio</a>
             <a href="/biblioteca" onClick={() => setMobileMenuOpen(false)}>Biblioteca</a>
             <a href="/salon" onClick={() => setMobileMenuOpen(false)}>Salón de la Fama</a>
             <a href="/auth" onClick={() => setMobileMenuOpen(false)}>Iniciar Sesión</a>

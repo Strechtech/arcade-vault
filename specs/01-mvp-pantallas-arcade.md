@@ -1,23 +1,25 @@
 # Spec 01: MVP Pantallas Arcade
 
-**State:** Implementado
-**Date:** 2026-08-19  
+**State:** Implementado + `/inicio`
+**Date:** 2026-08-19 | Updated: 2026-08-20
 **Depends on:** —
 
-**Objetivo:** Implementar todas las pantallas visuales del MVP de Arcade Bot (auth, biblioteca, detalle, reproductor, salon) como rutas Next.js con layout global, navegación sidebar+topbar, y mock data estructurada.
+**Objetivo:** Implementar todas las pantallas visuales del MVP de Arcade Vault (inicio, auth, biblioteca, detalle, reproductor, salon) como rutas Next.js con layout global, navegación navbar, y mock data estructurada.
 
 ---
 
 ## Scope
 
 **IN:**
-- Convertir templates (`auth.jsx`, `biblioteca.jsx`, `detalle.jsx`, `reproductor.jsx`, `salon.jsx`) a rutas Next.js
-- Root layout global (`app/layout.tsx`) con nav integrado
-- Route group `(auth)` separado, sin nav
-- Route group `(main)` para páginas protegidas con nav
-- Nav: sidebar + top bar renderizado en layouts
-- Mock data estructurada en `app/lib/mockData.ts` (listas, objetos, compatible con tipos)
-- TypeScript strict mode
+- ✅ Convertir templates (`auth.jsx`, `biblioteca.jsx`, `detalle.jsx`, `reproductor.jsx`, `salon.jsx`, `home.jsx`, `about.jsx`) a rutas Next.js
+- ✅ Ruta `/inicio` → home-about landing con hero, features, games preview, stats, activity, pricing
+- ✅ Root layout global (`app/layout.tsx`) con nav integrado
+- ✅ Route group `(auth)` separado, sin nav
+- ✅ Route group `(main)` para páginas protegidas con nav
+- ✅ Nav: topbar con links (Inicio, Biblioteca, Salón, Auth)
+- ✅ Mock data estructurada en `app/lib/mockData.ts` (games, users, leaderboard)
+- ✅ TypeScript strict mode
+- ✅ Estilos: globals.css (neon arcade, pixel fonts, animaciones reveal/float)
 
 **OUT:**
 - Lógica de autenticación real (solo UI + mock)
@@ -64,13 +66,15 @@ export const mockSalonGames: SalonGame[] = [...]
 ## Implementation Plan
 
 1. Crear estructura de rutas:
-   - `app/layout.tsx` (root, incluye nav)
-   - `app/(auth)/layout.tsx` y `app/(auth)/page.tsx` (login visual)
-   - `app/(main)/layout.tsx` (con nav heredado)
-   - `app/(main)/biblioteca/page.tsx`
-   - `app/(main)/detalle/page.tsx`
-   - `app/(main)/reproductor/page.tsx`
-   - `app/(main)/salon/page.tsx`
+   - ✅ `app/layout.tsx` (root, incluye TopBar nav)
+   - ✅ `app/page.tsx` (redirect a `/inicio`)
+   - ✅ `app/inicio/page.tsx` (landing hero con sections)
+   - ✅ `app/(auth)/layout.tsx` y `app/(auth)/page.tsx` (login visual)
+   - ✅ `app/(main)/layout.tsx` (con nav heredado)
+   - ✅ `app/(main)/biblioteca/page.tsx`
+   - ✅ `app/(main)/detalle/page.tsx`
+   - ✅ `app/(main)/reproductor/page.tsx`
+   - ✅ `app/(main)/salon/page.tsx`
 
 2. Crear componentes nav:
    - `app/components/Sidebar.tsx`
@@ -93,11 +97,15 @@ export const mockSalonGames: SalonGame[] = [...]
 
 ## Acceptance Criteria
 
-- [ ] `app/layout.tsx` renderiza sin errores
-- [ ] Ruta `/` redirige a `/auth` o muestra home
-- [ ] Ruta `/auth` muestra formulario visual (no valida, no envía)
-- [ ] Rutas `/biblioteca`, `/detalle`, `/reproductor`, `/salon` existen y renderizan
-- [ ] Nav (sidebar+topbar) aparece en todas las main routes
+- [x] `app/layout.tsx` renderiza sin errores
+- [x] Ruta `/` redirige a `/inicio`
+- [x] Ruta `/inicio` muestra landing completo (hero + features + games + stats + activity + pricing)
+- [x] Ruta `/auth` muestra formulario visual (no valida, no envía)
+- [x] Rutas `/biblioteca`, `/detalle`, `/reproductor`, `/salon` existen y renderizan
+- [x] Nav (TopBar) aparece en todas las rutas con link "Inicio" + logo enruta a `/inicio`
+- [x] Estilos home-about integrados en globals.css (neon arcade, pixel fonts)
+- [x] Reveal animations (scroll lazy-load) funcionan en `/inicio`
+- [x] Responsive: feature-grid 4→2→1 col; mini-rail 6→3→2 col; activity-grid 1.2fr→1fr
 - [ ] Mock data se inyecta correctamente en componentes
 - [ ] Cero errores TypeScript strict mode
 - [ ] Tailwind CSS se aplica correctamente (sin CSS inline legacy)
