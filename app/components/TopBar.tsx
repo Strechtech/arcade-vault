@@ -13,14 +13,15 @@ export default function TopBar({ user }: TopBarProps) {
   return (
     <>
       <nav className="av-nav">
-        <a href="/inicio" className="logo">
+        <a href="/" className="logo">
           <div className="logo-mark"></div>
           <div className="logo-text neon-cyan">ARCADE <span className="neon-magenta">VAULT</span></div>
         </a>
         <div className="links">
-          <a href="/inicio">Inicio</a>
+          <a href="/">Inicio</a>
           <a href="/biblioteca">Biblioteca</a>
           <a href="/salon">Salón de la Fama</a>
+          <a href="/about">Acerca de</a>
         </div>
         <div className="spacer"></div>
         <div className="coin-counter">
@@ -46,9 +47,10 @@ export default function TopBar({ user }: TopBarProps) {
           ></div>
           <aside className="av-mobile-panel open">
             <div className="pixel neon-cyan" style={{ fontSize: 11, marginBottom: 16 }}>MENÚ</div>
-            <a href="/inicio" onClick={() => setMobileMenuOpen(false)}>Inicio</a>
+            <a href="/" onClick={() => setMobileMenuOpen(false)}>Inicio</a>
             <a href="/biblioteca" onClick={() => setMobileMenuOpen(false)}>Biblioteca</a>
             <a href="/salon" onClick={() => setMobileMenuOpen(false)}>Salón de la Fama</a>
+            <a href="/about" onClick={() => setMobileMenuOpen(false)}>Acerca de</a>
             <a href="/auth" onClick={() => setMobileMenuOpen(false)}>Iniciar Sesión</a>
             <div style={{ flex: 1 }}></div>
             <div className="pixel" style={{ fontSize: 9, color: "var(--ink-faint)", letterSpacing: "0.16em" }}>CRÉDITOS · 03</div>
