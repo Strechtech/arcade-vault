@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { mockGames, mockUser } from "@/app/lib/mockData";
+import { useSaveScore } from "@/app/components/GameScoreSaver";
 
 export default function ReproductorPage() {
   const searchParams = useSearchParams();
@@ -20,6 +21,11 @@ export default function ReproductorPage() {
   const [over, setOver] = useState(false);
   const [name, setName] = useState(mockUser.name);
   const [saved, setSaved] = useState(false);
+
+  const { saveScore, loading: savingScore } = useSaveScore({
+    onSaved: () => setSaved(true),
+    onError: (err) => console.error("Error guardando score:", err),
+  });
 
   useEffect(() => {
     if (over || paused) return;
@@ -145,11 +151,12 @@ export default function ReproductorPage() {
                   />
                   <button
                     className="btn yellow"
-                    onClick={() => {
-                      setSaved(true);
+                    onClick={async () => {
+                      await saveScore(mockUser.id, game.id, score);
                     }}
+                    disabled={savingScore}
                   >
-                    GUARDAR PUNTUACIÓN
+                    {savingScore ? "GUARDANDO..." : "GUARDAR PUNTUACIÓN"}
                   </button>
                 </div>
               </div>
