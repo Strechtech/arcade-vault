@@ -20,7 +20,12 @@ export function useSaveScore(options?: UseSaveScoreOptions) {
     setError(null)
     try {
       const client = createClient()
-      const { error: dbError } = await client.from('scores').insert([
+
+      if (!userId || !gameId) {
+        throw new Error('userId y gameId son requeridos')
+      }
+
+      const { error: dbError, data } = await client.from('scores').insert([
         {
           user_id: userId,
           game_id: gameId,
@@ -28,12 +33,17 @@ export function useSaveScore(options?: UseSaveScoreOptions) {
         },
       ])
 
-      if (dbError) throw dbError
+      if (dbError) {
+        console.error('DB Error:', dbError)
+        throw new Error(`Error guardando: ${dbError.message}`)
+      }
 
+      console.log('Score guardado:', data)
       setSaved(true)
       options?.onSaved?.()
     } catch (err) {
-      const e = err instanceof Error ? err : new Error('Error saving score')
+      const e = err instanceof Error ? err : new Error('Error guardando puntuación')
+      console.error('Save error:', e)
       setError(e)
       options?.onError?.(e)
     } finally {

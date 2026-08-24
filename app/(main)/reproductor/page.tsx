@@ -22,9 +22,13 @@ export default function ReproductorPage() {
   const [name, setName] = useState(mockUser.name);
   const [saved, setSaved] = useState(false);
 
+  const [saveError, setSaveError] = useState<string | null>(null);
   const { saveScore, loading: savingScore } = useSaveScore({
     onSaved: () => setSaved(true),
-    onError: (err) => console.error("Error guardando score:", err),
+    onError: (err) => {
+      console.error("Error guardando score:", err);
+      setSaveError(err.message);
+    },
   });
 
   useEffect(() => {
@@ -152,6 +156,7 @@ export default function ReproductorPage() {
                   <button
                     className="btn yellow"
                     onClick={async () => {
+                      setSaveError(null);
                       await saveScore(mockUser.id, game.id, score);
                     }}
                     disabled={savingScore}
@@ -159,6 +164,11 @@ export default function ReproductorPage() {
                     {savingScore ? "GUARDANDO..." : "GUARDAR PUNTUACIÓN"}
                   </button>
                 </div>
+                {saveError && (
+                  <div style={{ marginTop: 12, padding: 8, background: "rgba(255,0,110,0.2)", border: "1px solid #ff006e", borderRadius: 4, color: "#ff006e", fontSize: 12 }}>
+                    ⚠ {saveError}
+                  </div>
+                )}
               </div>
             ) : (
               <div>
